@@ -18,7 +18,11 @@ import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.TestMethodOrder;
 import org.junit.jupiter.api.MethodOrderer.OrderAnnotation;
+
+import static org.junit.Assert.assertThat;
 import static org.junit.Assert.assertTrue;
+import static org.hamcrest.CoreMatchers.is;
+
 
 
 
@@ -36,13 +40,12 @@ public class WatchlistTest {
 		//Initialize the web driver and go to the IMDb home page
 		ChromeWebDriver chromeWD = new ChromeWebDriver(".\\Driver\\chromedriver.exe");
 		driver = chromeWD.initializeAtUrl("https://www.imdb.com");
-		//Register to IMDb in order to be able to use the IMDb feature
+		//Register to IMDb 
 		SignIn sI = new SignIn(driver);
 		sI.verifyAndSignInWithIMDb();
 	}
 	
 	
-
 	@Test
 	public void addToWatchlistAndVerify(){
 		//Add to watchlist
@@ -58,8 +61,7 @@ public class WatchlistTest {
 		//Verify watchlist
 		VerifyWatchListPage verfiyWP = new VerifyWatchListPage(driver, tvSeriesArr);
 		boolean returnValue = verfiyWP.verifyWatchList();
-		System.out.println(returnValue);
-		assertTrue(returnValue);
+		assertThat(returnValue,is(true));
 	}
 		
 
