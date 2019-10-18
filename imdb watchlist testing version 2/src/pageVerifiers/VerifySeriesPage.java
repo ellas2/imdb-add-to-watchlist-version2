@@ -4,14 +4,10 @@ import org.openqa.selenium.WebDriver;
 import pageObjects.SeriesPage;
 
 public class VerifySeriesPage {
-	private WebDriver driver = null;
-	private String[] tvSeries = null;
 	private float ratingVal = 0.0f;
 	private SeriesPage sPage = null;
 	
-	public VerifySeriesPage(WebDriver driver, String[] tvSeries, float ratingVal) {
-		this.driver = driver;
-		this.tvSeries = tvSeries;
+	public VerifySeriesPage(WebDriver driver, float ratingVal) {
 		this.ratingVal = ratingVal;
 		this.sPage = new SeriesPage(driver);
 	}
