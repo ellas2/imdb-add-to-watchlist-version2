@@ -18,15 +18,15 @@ public class WatchlistPage {
 	}
 	
 	public String getWatchlistCount() {
-		return driver.findElement(this.titleCount).getText();
+		return driver.findElement(titleCount).getText();
 	}
 	
 	public WebElement sortBy() {
-		return driver.findElement(this.sortOptions);
+		return driver.findElement(sortOptions);
 	}
 	
 	public void loadMore() {
-		driver.findElement(this.loadMore).click();
+		driver.findElement(loadMore).click();
 	}
 	
 	public void updateXpathString(String strInd) {
