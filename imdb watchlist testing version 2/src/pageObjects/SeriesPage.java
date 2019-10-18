@@ -17,7 +17,7 @@ public class SeriesPage {
 	}
 	
 	public String getRating() {
-		return driver.findElement(By.className("rating")).getText();//String of form 'x/10'
+		return driver.findElement(rating).getText();//String of form 'x/10'
 	}
 	
 	public void waitForRibbon() {
