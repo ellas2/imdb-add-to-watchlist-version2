@@ -4,21 +4,16 @@ import org.openqa.selenium.WebDriver;
 import pageObjects.SearchPage;
 
 public class VerifySearchPage {
-	private WebDriver driver = null;
 	private SearchPage search = null;
 	private String[] tvSeriesArr = null;
-	private float ratingVal = 0.0f;
 		
-	public VerifySearchPage(WebDriver driver, String[] tvSeries, float ratingVal) {
-		this.driver = driver;
-		SearchPage search = new SearchPage(driver);
-		this.ratingVal = ratingVal;
+	public VerifySearchPage(WebDriver driver, String[] tvSeries) {
+		this.search = new SearchPage(driver);
 		this.tvSeriesArr = tvSeries;
 	}
 	
 	public void findSeriesAtIndex(int i) {
 		//enter the name from the array in the main search bar
-		SearchPage search = new SearchPage(driver);
 		search.searchForShow (tvSeriesArr[i]);
 		//find the number of expected results - so we'll know when to stop
 		int iCount = search.numSearchResults();
