@@ -1,30 +1,16 @@
 package test;
-import java.lang.*; 
-import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.chrome.ChromeDriver;
-import org.openqa.selenium.support.ui.ExpectedConditions;
-import org.openqa.selenium.support.ui.WebDriverWait;
-
 import pageVerifiers.VerifySearchPage;
 import pageVerifiers.VerifySeriesPage;
 import pageVerifiers.VerifyWatchListPage;
 import preconditions.ChromeWebDriver;
 import preconditions.PropFileHandler;
 import preconditions.SignIn;
-
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.Test;
-import org.junit.jupiter.api.TestMethodOrder;
-import org.junit.jupiter.api.MethodOrderer.OrderAnnotation;
-
 import static org.junit.Assert.assertThat;
-import static org.junit.Assert.assertTrue;
 import static org.hamcrest.CoreMatchers.is;
-
-
-
 
 public class WatchlistTest {
 	WebDriver driver = null;
@@ -45,12 +31,11 @@ public class WatchlistTest {
 		sI.verifyAndSignInWithIMDb();
 	}
 	
-	
 	@Test
 	public void addToWatchlistAndVerify(){
 		//Add to watchlist
-		VerifySearchPage verifySearch = new VerifySearchPage(driver, tvSeriesArr, ratingValue);
-		VerifySeriesPage verifySeries = new VerifySeriesPage(driver, tvSeriesArr, ratingValue);
+		VerifySearchPage verifySearch = new VerifySearchPage(driver, tvSeriesArr);
+		VerifySeriesPage verifySeries = new VerifySeriesPage(driver, ratingValue);
 		for(int i = 0; i < tvSeriesArr.length; i++) {
 			verifySearch.findSeriesAtIndex(i);
 			boolean res = verifySeries.checkRatingAndAddToWL(i);
@@ -64,8 +49,6 @@ public class WatchlistTest {
 		assertThat(returnValue,is(true));
 	}
 		
-
-	
 	@AfterEach
 	public void tearDown() {
 		driver.quit();
